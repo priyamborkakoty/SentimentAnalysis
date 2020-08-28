@@ -1,0 +1,9 @@
+punctuation_chars = ["'", '"', ",", ".", "!", ":", ";", '#', '@']
+
+def strip_punctuation(x):
+    for i in x:
+        if i in punctuation_chars:
+            x=x.replace(i,"")
+    return x
+
+print(strip_punctuation("##incre.dible"))

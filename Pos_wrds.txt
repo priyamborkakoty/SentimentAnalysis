@@ -1,0 +1,26 @@
+punctuation_chars = ["'", '"', ",", ".", "!", ":", ";", '#', '@']
+# list of positive words to use
+positive_words = []
+with open("positive_words.txt") as pos_f:
+    for lin in pos_f:
+        if lin[0] != ';' and lin[0] != '\n':
+            positive_words.append(lin.strip())
+
+def strip_punctuation(x):
+    for i in x:
+        if i in punctuation_chars:
+            x=x.replace(i,"")
+    return x
+
+def get_pos(x):
+    lst=x.split(" ")
+    c=0
+    counter=0
+    for i in lst:
+        lst[c]=strip_punctuation(i)
+        lst[c]=lst[c].lower()
+        if lst[c] in positive_words:
+            counter+=1
+        c+=1
+    return counter
+    
